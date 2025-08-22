@@ -52,6 +52,12 @@ Além disso, só fazer a tradução fará com que os nomes sejam os mesmos das f
 
 
 #arquivo: error-handler.ts
+- função errorHandlingMiddleware tem uso excessivo de if-else;
+
+#arquivo: server.ts
+
+- o número 3000 pode ter seu uso inferido da função, mas para ficar claro na leitura, melhor atribuir a uma variável;
+
 
 
 	

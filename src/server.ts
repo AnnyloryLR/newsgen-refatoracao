@@ -4,6 +4,8 @@ import app from "./app";
 
 dotenv.config();
 
-app.listen(process.env.PORT || 3000, () => {
+const port = 3000;
+
+app.listen(process.env.PORT || port, () => {
   console.log(`Server is up and running.`);
 });
