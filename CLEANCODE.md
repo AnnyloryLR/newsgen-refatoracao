@@ -52,6 +52,7 @@ Além disso, só fazer a tradução fará com que os nomes sejam os mesmos das f
 
 
 #arquivo: error-handler.ts
+
 - função errorHandlingMiddleware tem uso excessivo de if-else;
 
 #arquivo: server.ts
