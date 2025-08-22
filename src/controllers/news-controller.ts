@@ -6,7 +6,7 @@ import * as service from "./../services/news-service";
 import { AlterNewsData, CreateNewsData } from "../repositories/news-repository";
 
 export async function getNews(req: Request, res: Response) {
-  const news = await service.getNews();
+  const news = await service.getAllNews();
   return res.send(news);
 }
 
@@ -16,13 +16,13 @@ export async function getSpecificNews(req: Request, res: Response) {
     return res.status(httpStatus.BAD_REQUEST).send("Id is not valid.");
   }
 
-  const news = await service.getSpecificNews(id);
+  const news = await service.getNewsById(id);
   return res.send(news);
 }
 
 export async function createNews(req: Request, res: Response) {
   const newsData = req.body as CreateNewsData;
-  const createdNews = await service.createNews(newsData);
+  const createdNews = await service.insertNews(newsData);
 
   return res.status(httpStatus.CREATED).send(createdNews);
 }
@@ -45,6 +45,6 @@ export async function deleteNews(req: Request, res: Response) {
     return res.status(httpStatus.BAD_REQUEST).send("Id is not valid.");
   }
 
-  await service.deleteNews(id);
+  await service.removeNews(id);
   return res.sendStatus(httpStatus.NO_CONTENT);
 }
