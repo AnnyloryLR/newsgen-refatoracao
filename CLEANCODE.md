@@ -15,27 +15,45 @@ Além disso, só fazer a tradução fará com que os nomes sejam os mesmos das f
 
 #arquivo: news-service.ts
 
-- getNews() tem nome pouco semântico;
+- função getNews tem nome pouco semântico;
 
-- getSpecificNews() tem nome pouco semântico;
+- função getSpecificNews tem nome pouco semântico;
 
-- createNews() é o mesmo nome da função no arquivo da camada 
+- função createNews tem o mesmo nome da função no arquivo da camada 
 "repository";
 
-- deleteNews() é representa melhor a função da camada "repository", portanto, foi mudado para não ficar igual;
+- função deleteNews representa melhor a função da camada "repository", portanto, foi mudado para não ficar repetido;
 
-- alterNews tem trexo de complexidade boleana (news.title !== newsData.title) que pode ser atribuída a uma variável para melhor entendimento;
+- função alterNews tem trecho de complexidade boleana (news.title !== newsData.title) que pode ser atribuída a uma variável para melhor entendimento;
 
-- validate() tem nome pouco semântico;
+- função validate tem nome pouco semântico;
 
-- validate() tem variável newsWithTitle com  nome pouco semântica;
+- função validate tem variável newsWithTitle com  nome pouco semântica;
 
-- validate() tem trexo de complexidade boleana (newsData.text.length < 500) que pode ser atribuída a uma variável para melhor entendimento, além de não se especificar o que é o número 500;
+- função validate tem trecho de complexidade boleana (newsData.text.length < 500) que pode ser atribuído a uma variável para melhor entendimento;
 
--validate() é uma função com muitas responsabilidades e de difícil entendimento;
+- função validate não especifica o que representa o número 500;
+
+- função validate é uma função com muitas responsabilidades e de difícil entendimento;
+
+#arquivo: news-controller.ts
+
+- função getNews tem nome pouco semântico;
+
+- função getSpecificNews tem nome pouco semântico;
+
+- função getSpecificNews tem trecho de complexidade boleana (isNaN(id) || id <= 0) que pode ser atribuído a uma variável para melhor entendimento;
+
+- função alterNews tem o nome repetido, pois é o mesmo na camada "service";
+
+- função alterNews tem trecho de complexidade boleana (isNaN(id) || id <= 0) que pode ser atribuído a uma variável para melhor entendimento;
+
+- função deleteNews tem trecho de complexidade boleana (isNaN(id) || id <= 0) que pode ser atribuído a uma variável para melhor entendimento;
 
 
 #arquivo: error-handler.ts
+
+
 	
 
 

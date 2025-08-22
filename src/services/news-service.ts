@@ -2,11 +2,11 @@ import prisma from "../database";
 import * as newsRepository from "../repositories/news-repository";
 import { AlterNewsData, CreateNewsData } from "../repositories/news-repository";
 
-export async function getAllNews() {
+export async function selectAllNews() {
   return newsRepository.findAllNews();
 }
 
-export async function getNewsById(id: number) {
+export async function selectNewsById(id: number) {
   const news = await newsRepository.findNewsById(id);
   if (!news) {
     throw {
@@ -24,7 +24,7 @@ export async function insertNews(newsData: CreateNewsData) {
 }
 
 export async function alterNews(id: number, newsData: AlterNewsData) {
-  const news = await getNewsById(id);
+  const news = await selectNewsById(id);
   const isNew = news.title !== newsData.title;
 
   validateNewsData(newsData, isNew);
@@ -33,7 +33,7 @@ export async function alterNews(id: number, newsData: AlterNewsData) {
 }
 
 export async function removeNews(id: number) {
-  await getNewsById(id);
+  await selectNewsById(id);
   return newsRepository.deleteNews(id);
 }
 
