@@ -2,12 +2,12 @@ import prisma from "../database";
 import * as newsRepository from "../repositories/news-repository";
 import { AlterNewsData, CreateNewsData } from "../repositories/news-repository";
 
-export async function getNews() {
-  return newsRepository.getNews();
+export async function getAllNews() {
+  return newsRepository.findAllNews();
 }
 
-export async function getSpecificNews(id: number) {
-  const news = await newsRepository.getNewsById(id);
+export async function getNewsById(id: number) {
+  const news = await newsRepository.findNewsById(id);
   if (!news) {
     throw {
       name: "NotFound",
@@ -18,21 +18,21 @@ export async function getSpecificNews(id: number) {
   return news;
 }
 
-export async function createNews(newsData: CreateNewsData) {
+export async function insertNews(newsData: CreateNewsData) {
   await validate(newsData);
   return newsRepository.createNews(newsData);
 }
 
 export async function alterNews(id: number, newsData: AlterNewsData) {
-  const news = await getSpecificNews(id);
+  const news = await getNewsById(id);
   await validate(newsData, news.title !== newsData.title);
 
   return newsRepository.updateNews(id, newsData);
 }
 
-export async function deleteNews(id: number) {
-  await getSpecificNews(id);
-  return newsRepository.removeNews(id);
+export async function removeNews(id: number) {
+  await getNewsById(id);
+  return newsRepository.deleteNews(id);
 }
 
 async function validate(newsData: CreateNewsData, isNew = true) {

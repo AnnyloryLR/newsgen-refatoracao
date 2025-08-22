@@ -4,7 +4,7 @@ import { News } from "@prisma/client";
 export type CreateNewsData = Omit<News, "id" | "createAt">;
 export type AlterNewsData = CreateNewsData;
 
-export function getNews() {
+export function findAllNews() {
   return prisma.news.findMany({
     orderBy: {
       publicationDate: "desc"
@@ -12,7 +12,7 @@ export function getNews() {
   });
 }
 
-export function getNewsById(id: number) {
+export function findNewsById(id: number) {
   return prisma.news.findUnique({
     where: { id }
   })
@@ -31,7 +31,7 @@ export async function updateNews(id: number, news: AlterNewsData) {
   })
 }
 
-export async function removeNews(id: number) {
+export async function deleteNews(id: number) {
   return prisma.news.delete({
     where: { id }
   })
